@@ -1,4 +1,4 @@
-# Student crud
+# Student crud 📃
 
 ## Run application: 
 `ng serve -o`
@@ -15,16 +15,10 @@ Create a document:
 http://localhost:4000/student/add Method: POST
 Body example: 
 `{
-	"student_name": "Arturito",
-    "student_id_number": 1234,
-	"courses": [
-            {
-                "matematicas": 4
-            },
-            {
-                "ingles": 5
-            }
-        ]
+	"student_name": "Paul",
+	"student_id_number": 8765,
+	"subject_name":"ingles",
+	"grade": 4.8
 }`
 
 2. ### Entregar	una	colección:
@@ -60,8 +54,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
-## Code scaffolding
+# Containers - Docker 🐳
+Advantages of using containers:
+- Containers are light (unlike virtual machines)
+- Portable
+- Easy to reuse
+- Each container is independent
+- Fast Release
+- Provides an eficient usage of resources
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Many things, like a Data Base, a OS, a program can be containerized. We connect to a host (kernel of the OS) instead of connecting to the OS itself.
+
+It is important to use Containers because they have several advantages (like mentioned above) compared to other tools like virtual machines, so it can improve performance in building projects.
+
+Maintenability and deployment, for example, can be enhanced by using containers, as they are also small, and easy to manage.
