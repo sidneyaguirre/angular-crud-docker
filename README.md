@@ -45,7 +45,7 @@ Update all documents that match a criteria: http://localhost:4000/student/update
 returns all documents from the Student collection where each document match the query
 
 7. ### Entregar	el	promedio	de	las	notas	de	todos	los	estudiantes	de	un	curso
-Get the collection: http://localhost:4000/mean/:course Method: GET
+Get the collection: http://localhost:4000/student/mean/:course Method: GET
 (The mean will be get from all students in the course parameter)
 Returns the mean of all students in a course from the Student collection.
 
