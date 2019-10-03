@@ -15,11 +15,38 @@ Create a document:
 http://localhost:4000/student/add Method: POST
 Body example: 
 `{
-	"student_name": "Paul",
-	"student_id_number": 8765,
-	"subject_name":"ingles",
-	"grade": 4.8
+	"student_name": "Arturito",
+	"student_id_number": 1265,
+	"courses": {
+		"ingles": 4,
+		"matematicas": 4.5,
+		"literatura": 5
+	},
+	"semester": 1,
+	"active": true
 }`
+
+the Student Schema is defined as:
+`{
+    student_name: {
+      type: String,
+      required: true
+    },
+    student_id_number: {
+      type: Number,
+      required: true
+    },
+    courses: {
+      type: JSON
+    },
+    semester: {
+      type: Number
+    },
+    active: {
+      type: Boolean,
+      required: true
+    }
+  }`
 
 2. ### Entregar	una	colección:
 Get the collection: http://localhost:4000/student/ Method: GET
@@ -40,9 +67,8 @@ Delete a Document: http://localhost:4000/student/delete/:id Method: GET
 (The parameter id corresponds to the id of the student in the database)
 
 6. ### Modificar	todos	los	registros	que	cumplan	con	un	criterio
-Update all documents that match a criteria: http://localhost:4000/student/update/?=q Method: POST
-(The parameter q corresponds to the query to apply in the student collection)
-returns all documents from the Student collection where each document match the query
+Update all documents that match a criteria: http://localhost:4000/student/semester Method: POST
+Updates all documents from the Student collection incrementing the semester where the student is active
 
 7. ### Entregar	el	promedio	de	las	notas	de	todos	los	estudiantes	de	un	curso
 Get the collection: http://localhost:4000/student/mean/:course Method: GET

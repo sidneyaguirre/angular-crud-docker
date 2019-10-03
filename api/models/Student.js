@@ -4,13 +4,22 @@ const Schema = mongoose.Schema;
 let Student = new Schema(
   {
     student_name: {
-      type: String
+      type: String,
+      required: true
     },
     student_id_number: {
-      type: Number
+      type: Number,
+      required: true
     },
     courses: {
       type: JSON
+    },
+    semester: {
+      type: Number
+    },
+    active: {
+      type: Boolean,
+      required: true
     }
   },
   {

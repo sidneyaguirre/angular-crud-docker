@@ -10,6 +10,8 @@ studentRoutes.route("/add").post(function(req, res) {
   student.student_name = req.body.student_name;
   student.student_id_number = req.body.student_id_number;
   student.courses = req.body.courses;
+  student.semester = req.body.semester;
+  student.active = req.body.active;
   student
     .save()
     .then(student => {
@@ -67,24 +69,14 @@ studentRoutes.route("/update/:id").post(function(req, res) {
   });
 });
 // Defined update route to update all Documents
-studentRoutes.route("/update/?=q").post(function(req, res) {
-  var query = req.query.q;
-  Student.updateMany(query, function(err, next, student) {
-    if (!student) return next(new Error("Could not load Document"));
-    else {
-      student.student_name = req.body.student_name;
-      student.student_id_number = req.body.student_id_number;
-      student.courses = req.body.courses;
-      student
-        .save()
-        .then(student => {
-          res.json("Update completed");
-        })
-        .catch(err => {
-          res.status(400).send("unable to update the database");
-        });
-    }
-  });
+studentRoutes.route("/semester").post(function(req, res) {
+  Student.updateMany({ active: true }, { $inc: { semester: 1 } })
+    .then(() => {
+      res.json("Update completed");
+    })
+    .catch(err => {
+      res.status(400).send("unable to update the database");
+    });
 });
 // Defined delete | remove | destroy route
 studentRoutes.route("/delete/:id").get(function(req, res) {
@@ -97,11 +89,11 @@ studentRoutes.route("/delete/:id").get(function(req, res) {
 studentRoutes.route("/mean/:course").get(function(req, res) {
   let course = req.params.course;
   let filter = `{"courses.${course}": { "$gte": 0 }}`;
-  let projection = `"courses.${course}"`
+  let projection = `"courses.${course}"`;
 
   filter = JSON.parse(filter);
   projection = JSON.parse(projection);
-  
+
   Student.find(filter, projection).exec((err, student) => {
     if (err) {
       res.json(err);
@@ -109,11 +101,12 @@ studentRoutes.route("/mean/:course").get(function(req, res) {
       let grades = 0;
       for (let i = 0; i < student.length; i++) {
         grades += student[i].courses[course];
-    }  
-      var mean = grades/student.length;
+      }
+      var mean = grades / student.length;
       console.log(mean);
       res.json(mean);
-  }});
+    }
+  });
 });
 
 module.exports = studentRoutes;
