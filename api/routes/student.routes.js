@@ -9,11 +9,7 @@ studentRoutes.route("/add").post(function(req, res) {
   let student = new Student();
   student.student_name = req.body.student_name;
   student.student_id_number = req.body.student_id_number;
-  let aux = {
-    "subject_name": req.body.subject_name,
-    "grade": req.body.grade
-  }
-  student.courses = aux;
+  student.courses = req.body.courses;
   student
     .save()
     .then(student => {
@@ -99,23 +95,25 @@ studentRoutes.route("/delete/:id").get(function(req, res) {
 });
 // Defined mean grade of a course route
 studentRoutes.route("/mean/:course").get(function(req, res) {
-  var filter = req.params.course;
-  Student.find({ courses: { $elemMatch: { subject_name: filter }}}).exec((err, student) => {
-    if (student.length === 0) {
-      res.status(404).send("Could not find course: ", filter)
-    }
+  let course = req.params.course;
+  let filter = `{"courses.${course}": { "$gte": 0 }}`;
+  let projection = `"courses.${course}"`
+
+  filter = JSON.parse(filter);
+  projection = JSON.parse(projection);
+  
+  Student.find(filter, projection).exec((err, student) => {
     if (err) {
       res.json(err);
     } else {
       let grades = 0;
       for (let i = 0; i < student.length; i++) {
-        grades += student[i].courses[0].grade;
-      }
+        grades += student[i].courses[course];
+    }  
       var mean = grades/student.length;
       console.log(mean);
       res.json(mean);
-    }
-  });
+  }});
 });
 
 module.exports = studentRoutes;

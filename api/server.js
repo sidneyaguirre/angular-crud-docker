@@ -8,7 +8,7 @@ const businessRoute = require("./routes/business.routes");
 const studentRoute = require("./routes/student.routes");
 
 mongoose.Promise = global.Promise;
-mongoose.connect(config.DB, { useNewUrlParser: true }).then(
+mongoose.connect(config.DB, { useNewUrlParser: true, useUnifiedTopology: true  }).then(
   () => {
     console.log("Database is connected");
   },

@@ -9,14 +9,9 @@ let Student = new Schema(
     student_id_number: {
       type: Number
     },
-    courses: [{
-      subject_name: {
-        type: String
-      },
-      grade: {
-        type: Number
-      }
-    }]
+    courses: {
+      type: JSON
+    }
   },
   {
     collection: "students"
