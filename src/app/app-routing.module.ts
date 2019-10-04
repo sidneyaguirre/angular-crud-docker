@@ -24,7 +24,7 @@ const routes: Routes = [
     component: CrudEditComponent
   },
   {
-    path: "roman-numerals",
+    path: "roman/numerals",
     component: RomanNumeralsComponent
   }
 ];

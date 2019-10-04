@@ -1,12 +1,25 @@
 <div>
-  <form action="">
-    <div><input type="number" placeholder="write a number from 1 to 1000"></div>
-    <div>
-        <button>Convert</button>
+  <div class="card-body">
+    <div class="form-group">
+      <input
+        #arabicNumber
+        type="number"
+        placeholder="Type a number"
+        class="formcontrol"
+      />
     </div>
-  </form>
-  <div>
-      <label>Roman Numeral</label>
-      <label></label>
+    <div class="form-group">
+      <button
+        (click)="toRoman(arabicNumber.value)"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Convert
+      </button>
+    </div>
+    <div>
+      <h5>Roman Numeral</h5>
+      <h5><code>{{ romanNumber }}</code></h5>
+    </div>
   </div>
 </div>
