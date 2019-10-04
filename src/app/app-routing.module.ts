@@ -11,12 +11,16 @@ const routes: Routes = [
     component: CrudAddComponent
   },
   {
-    path: "business/edit/:id",
+    path: "business/edit",
     component: CrudEditComponent
   },
   {
-    path: "business",
+    path: "business/list",
     component: CrudGetComponent
+  },
+  {
+    path: "business/delete/:id",
+    component: CrudEditComponent
   }
 ];
 @NgModule({

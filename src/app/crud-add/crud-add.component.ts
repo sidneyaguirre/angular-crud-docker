@@ -8,6 +8,7 @@ import { BusinessService } from "../business.service";
 })
 export class CrudAddComponent implements OnInit {
   angForm: FormGroup;
+
   constructor(private fb: FormBuilder, private bs: BusinessService) {
     this.createForm();
   }
@@ -18,8 +19,8 @@ export class CrudAddComponent implements OnInit {
       business_gst_number: ["", Validators.required]
     });
   }
-  addBusiness(person_name, busines_name, business_gst_number) {
-    this.bs.addBusiness(person_name, busines_name, business_gst_number);
+  addBusiness(person_name, business_name, business_gst_number) {
+    this.bs.addBusiness(person_name, business_name, business_gst_number);
   }
   ngOnInit() {}
 }

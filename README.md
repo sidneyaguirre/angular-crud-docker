@@ -49,12 +49,14 @@ the Student Schema is defined as:
   }`
 
 2. ### Entregar	una	colección:
-Get the collection: http://localhost:4000/student/ Method: GET
+Get the collection: http://localhost:4000/student/ <br>
+Method: GET<br/>
 Returns all documents from the Student collection.
 
 3. ### Entregar	un	registro
 Get a document: 
-http://localhost:4000/student/get/:id Method: GET.
+http://localhost:4000/student/get/:id <br/>
+Method: GET <br/>
 (The parameter id corresponds to the student_id_number field of a student in the database)
 
 4. ### Modificar	un	registro 

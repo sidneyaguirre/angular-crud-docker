@@ -13,6 +13,7 @@ import { CrudEditComponent } from "./crud-edit/crud-edit.component";
 
 import { BusinessService } from "./business.service";
 import { StudentAddComponent } from './student-add/student-add.component';
+import { CrudDeleteComponent } from './crud-delete/crud-delete.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StudentAddComponent } from './student-add/student-add.component';
     CrudAddComponent,
     CrudGetComponent,
     CrudEditComponent,
-    StudentAddComponent
+    StudentAddComponent,
+    CrudDeleteComponent
   ],
   imports: [
     BrowserModule,
