@@ -32,18 +32,30 @@ export class CrudEditComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/business/list']);
+    this.router.navigate(["/business/list"]);
   }
 
   editBusiness(person_name, business_name, business_gst_number, id) {
-    this.bs.editBusiness(person_name, business_name, business_gst_number, id);
+    this.bs
+      .editBusiness(person_name, business_name, business_gst_number, id)
+      .subscribe(
+        () => {
+          console.log("Business updated");
+          this.gotoList();
+        },
+        error => console.error(error)
+      );
   }
 
   remove(_id) {
-    this.bs.remove(_id).subscribe(result => {
-    this.gotoList();
-  }, error => console.error(error));
-}
+    this.bs.remove(_id).subscribe(
+      result => {
+        console.log("Business deleted");
+        this.gotoList();
+      },
+      error => console.error(error)
+    );
+  }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {

@@ -19,7 +19,7 @@ export class BusinessService {
     console.log(obj);
     this.http
       .post(`${this.uri}/add`, obj)
-      .subscribe(res => console.log("Done"));
+      .subscribe(res => console.log("Business added"));
   }
 
   listBusiness(): Observable<any> {
@@ -32,9 +32,8 @@ export class BusinessService {
       business_name: business_name,
       business_gst_number: business_gst_number
     };
-    this.http
+    return this.http
       .post(`${this.uri}/update/${id}`, obj)
-      .subscribe(res => console.log("Done"));
   }
 
   remove(_id: string) {
